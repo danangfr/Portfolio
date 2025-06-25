@@ -10,7 +10,7 @@ interface ThemeProviderProps {
   defaultTheme?: string;
   enableSystem?: boolean;
   disableTransitionOnChange?: boolean;
-  [key: string]: any;
+  [key: string]: string | boolean | undefined | Attribute | Attribute[] | React.ReactNode;
 }
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {

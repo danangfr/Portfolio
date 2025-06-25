@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { projects } from '@/types/project';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeftIcon, ArrowTopRightOnSquareIcon, CodeBracketIcon, LinkIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon, CodeBracketIcon } from '@heroicons/react/24/outline';
 
 // Generate static params for all projects
 export async function generateStaticParams() {

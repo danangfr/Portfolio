@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { StarIcon } from '@heroicons/react/24/solid';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+
 
 interface Testimonial {
   id: number;
@@ -140,62 +140,18 @@ const TestimonialCard = ({
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const testimonialsLength = testimonials.length;
-
-  // Handle window resize for responsive design
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    // Set initial value
-    checkIfMobile();
-    
-    // Add event listener
-    window.addEventListener('resize', checkIfMobile);
-    
-    // Cleanup
-    return () => window.removeEventListener('resize', checkIfMobile);
-  }, []);
-
-  const nextTestimonial = useCallback(() => {
-    setCurrentIndex(prev => (prev + 1) % testimonials.length);
-  }, [testimonials.length]);
-
-  const prevTestimonial = useCallback(() => {
-    setCurrentIndex(prev => (prev - 1 + testimonials.length) % testimonials.length);
-  }, [testimonials.length]);
 
   const goToTestimonial = useCallback((index: number) => {
     setCurrentIndex(index);
   }, []);
 
-  // Get visible testimonials based on screen size
-  const getVisibleTestimonials = useCallback(() => {
-    if (isMobile) {
-      return [testimonials[currentIndex]];
-    }
-    
-    // Show current, previous, and next testimonials on desktop
-    const prevIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
-    const nextIndex = (currentIndex + 1) % testimonials.length;
-    
-    return [
-      { ...testimonials[prevIndex], id: 'prev' },
-      { ...testimonials[currentIndex], id: 'current' },
-      { ...testimonials[nextIndex], id: 'next' }
-    ];
-  }, [currentIndex, isMobile]);
-
-  // Auto-rotate main testimonial every 5 seconds
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % testimonialsLength);
-    }, 5000);
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % testimonials.length);
+    }, 8000);
     
-    return () => clearInterval(timer);
-  }, [testimonialsLength]);
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
   return (
     <section 
@@ -318,7 +274,7 @@ export default function Testimonials() {
                           </div>
                         </div>
                         <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
-                          "{testimonial.content}"
+                          &ldquo;{testimonial.content}&rdquo;
                         </p>
                       </div>
                     </div>

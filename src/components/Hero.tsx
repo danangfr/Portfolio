@@ -8,7 +8,6 @@ const profileImage = '/images/Danang Fatkhur Razak.jpg';
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
   
   // Handle mouse move for parallax effect
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {

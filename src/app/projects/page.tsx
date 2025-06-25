@@ -1,5 +1,6 @@
 import { projects } from '@/types/project';
 import ProjectCard from '@/components/ProjectCard';
+import Link from 'next/link';
 
 export default function ProjectsPage() {
   return (
@@ -28,12 +29,12 @@ export default function ProjectsPage() {
           <p className="text-gray-600 dark:text-gray-400 mb-6">
             Tertarik bekerja sama atau memiliki pertanyaan tentang proyek saya?
           </p>
-          <a 
+          <Link 
             href="/#contact" 
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
           >
             Hubungi Saya
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -122,7 +122,7 @@ const SkillCategory = ({
   isGrid = false
 }: { 
   title: string; 
-  icon: any; 
+  icon: React.ComponentType<{ className?: string }>; 
   children: React.ReactNode;
   delay?: number;
   className?: string;
@@ -173,19 +173,7 @@ const SkillCategory = ({
 
 export default function Skills() {
   const containerRef = useRef<HTMLElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
   const isInView = useInView(containerRef, { once: true, amount: 0.1 });
-
-  // Check if mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   // Animation variants
   const container = {

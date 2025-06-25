@@ -47,6 +47,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               src={project.image}
               alt={project.title}
               className="w-full h-full object-cover"
+              loading={index < 3 ? 'eager' : 'lazy'}
             />
           </motion.div>
           
