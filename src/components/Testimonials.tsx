@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { StarIcon } from '@heroicons/react/24/solid';
 
 
@@ -86,14 +87,17 @@ const TestimonialCard = ({
     <div className="flex items-start justify-between mb-6">
       <div className="flex items-center gap-4">
         <div className="relative">
-          <img 
-            src={testimonial.image} 
-            alt={testimonial.name} 
-            className="w-14 h-14 rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-md"
-            width={56}
-            height={56}
-            loading="lazy"
-          />
+          <div className="relative w-14 h-14 rounded-full border-2 border-white dark:border-gray-700 shadow-md overflow-hidden">
+            <Image 
+              src={testimonial.image} 
+              alt={`Foto profil ${testimonial.name}`}
+              width={56}
+              height={56}
+              className="object-cover w-full h-full"
+              loading="lazy"
+              aria-hidden="true"
+            />
+          </div>
           <div className="absolute -bottom-1 -right-1 bg-blue-500 text-white p-1 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.84 8.84 0 01-4.555-1.24A9.5 9.5 0 012 10c0-4.418 3.582-8 8-8s8 3.582 8 8zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
@@ -257,14 +261,17 @@ export default function Testimonials() {
                     }`}
                   >
                     <div className="flex items-start gap-3">
-                      <img 
-                        src={testimonial.image} 
-                        alt={testimonial.name}
-                        className="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-sm flex-shrink-0"
-                        width={40}
-                        height={40}
-                        loading="lazy"
-                      />
+                      <div className="relative w-10 h-10 rounded-full border-2 border-white dark:border-gray-700 shadow-sm flex-shrink-0 overflow-hidden">
+                        <Image
+                          src={testimonial.image}
+                          alt={`Foto profil ${testimonial.name}`}
+                          width={40}
+                          height={40}
+                          className="object-cover w-full h-full"
+                          loading="lazy"
+                          aria-hidden="true"
+                        />
+                      </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between">
                           <h4 className="font-medium text-gray-900 dark:text-white truncate">

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { DocumentIcon, CodeBracketIcon } from '@heroicons/react/24/outline';
 
 const profileImage = '/images/Danang Fatkhur Razak.jpg';
@@ -148,10 +149,13 @@ export default function Hero() {
 
               >
                 <div className="relative w-full h-full">
-                  <img
+                  <Image
                     src={profileImage}
                     alt="Danang"
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                    priority
                   />
                 </div>
               </motion.div>

@@ -3,10 +3,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import { Project } from '@/types/project';
-// Temporary using img instead of Next.js Image due to build issues
-// import Image from 'next/image';
 
 interface ProjectCardProps {
   project: Project;
@@ -46,11 +45,13 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               }}
               transition={{ duration: 0.5 }}
             >
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover"
-                loading={index < 3 ? 'eager' : 'lazy'}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+                priority={index < 3}
               />
             </motion.div>
           </div>
