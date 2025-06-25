@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { CodeBracketIcon, CpuChipIcon, ServerStackIcon, UserGroupIcon, SparklesIcon } from '@heroicons/react/24/outline';
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 
 const skills = {
   frontend: [
