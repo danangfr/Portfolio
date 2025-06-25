@@ -14,14 +14,12 @@ export async function generateStaticParams() {
 // Set revalidation time (in seconds)
 export const revalidate = 3600; // Revalidate at most every hour
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
+type PageProps = {
+  params: { id: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
 
-export default async function ProjectDetailPage({ params }: PageProps) {
+export default function ProjectDetailPage({ params }: PageProps) {
   // Find the project with the matching ID
   const project = projects.find((p) => p.id === params.id);
   
