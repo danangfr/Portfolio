@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import { Project } from '@/types/project';
+// Temporary using img instead of Next.js Image due to build issues
+// import Image from 'next/image';
 
 interface ProjectCardProps {
   project: Project;
@@ -36,20 +38,22 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       >
         {/* Project Image */}
         <div className="relative h-56 overflow-hidden">
-          <motion.div
-            className="w-full h-full bg-gray-200 dark:bg-gray-700"
-            animate={{
-              scale: isHovered ? 1.05 : 1,
-            }}
-            transition={{ duration: 0.5 }}
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover"
-              loading={index < 3 ? 'eager' : 'lazy'}
-            />
-          </motion.div>
+          <div className="relative w-full h-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <motion.div
+              className="w-full h-full"
+              animate={{
+                scale: isHovered ? 1.05 : 1,
+              }}
+              transition={{ duration: 0.5 }}
+            >
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover"
+                loading={index < 3 ? 'eager' : 'lazy'}
+              />
+            </motion.div>
+          </div>
           
           {/* Overlay */}
           <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6`}>

@@ -53,7 +53,6 @@ interface SkillBarProps {
 const SkillBar = ({ name, level, icon, index, delay = 0, showProgress = true }: SkillBarProps & { showProgress?: boolean }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
-  const [isHovered, setIsHovered] = useState(false);
   
   // Calculate color based on level
   const getColorClass = (level: number) => {
@@ -67,8 +66,6 @@ const SkillBar = ({ name, level, icon, index, delay = 0, showProgress = true }: 
     <div 
       ref={ref} 
       className="group relative mb-4 md:mb-5"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="flex justify-between items-center mb-1.5">
         <div className="flex items-center">
@@ -103,9 +100,7 @@ const SkillBar = ({ name, level, icon, index, delay = 0, showProgress = true }: 
               }
             }}
           >
-            <div className={`absolute right-0 top-0 h-full w-0.5 bg-white/70 transition-opacity duration-300 ${
-              isHovered ? 'opacity-100' : 'opacity-0'
-            }`}></div>
+            <div className="absolute right-0 top-0 h-full w-0.5 bg-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </motion.div>
         </div>
       )}

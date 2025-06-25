@@ -1,20 +1,19 @@
 'use client';
 
-import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { ArrowDownTrayIcon, CodeBracketIcon, ServerIcon, DocumentIcon } from '@heroicons/react/24/outline';
-import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { DocumentIcon, CodeBracketIcon } from '@heroicons/react/24/outline';
+import { useState } from 'react';
 
 const profileImage = '/images/Danang Fatkhur Razak.jpg';
 
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  
   // Handle mouse move for parallax effect
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    setMousePosition({
-      x: (e.clientX / window.innerWidth - 0.5) * 20,
-      y: (e.clientY / window.innerHeight - 0.5) * 20
-    });
+    // Parallax effect handler
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    // The position is used in the component's style
+    return { x, y };
   };
   
 

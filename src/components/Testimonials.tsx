@@ -127,11 +127,12 @@ const TestimonialCard = ({
       <p className={`text-gray-600 dark:text-gray-300 ${isLarge ? 'pl-10 pr-2 text-lg' : 'pl-6 pr-2 text-base'} leading-relaxed`}>
         {isLarge ? (
           <span className="relative">
-            <span className="absolute -left-6 text-4xl text-gray-200 dark:text-gray-700 font-serif">"</span>
+            <span className="absolute -left-6 text-4xl text-gray-200 dark:text-gray-700 font-serif">&ldquo;</span>
             {testimonial.content}
+            <span className="text-4xl text-gray-200 dark:text-gray-700 font-serif">&rdquo;</span>
           </span>
         ) : (
-          `"${testimonial.content}"`
+          <>&ldquo;{testimonial.content}&rdquo;</>
         )}
       </p>
     </div>
@@ -141,9 +142,9 @@ const TestimonialCard = ({
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const goToTestimonial = useCallback((index: number) => {
+  const goToTestimonial = (index: number) => {
     setCurrentIndex(index);
-  }, []);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -151,7 +152,7 @@ export default function Testimonials() {
     }, 8000);
     
     return () => clearInterval(interval);
-  }, [testimonials.length]);
+  }, []);
 
   return (
     <section 
@@ -260,6 +261,9 @@ export default function Testimonials() {
                         src={testimonial.image} 
                         alt={testimonial.name}
                         className="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-sm flex-shrink-0"
+                        width={40}
+                        height={40}
+                        loading="lazy"
                       />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between">
