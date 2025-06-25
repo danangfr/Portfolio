@@ -18,9 +18,10 @@ interface PageProps {
   params: {
     id: string;
   };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default function ProjectDetailPage({ params }: PageProps) {
+export default async function ProjectDetailPage({ params }: PageProps) {
   // Find the project with the matching ID
   const project = projects.find((p) => p.id === params.id);
   
